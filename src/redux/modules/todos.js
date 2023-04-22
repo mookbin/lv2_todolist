@@ -1,5 +1,5 @@
 // import React from "react";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 
 //액션타입 정의 action value
 export const ADD_TODO = "ADD_TODO";
@@ -31,8 +31,8 @@ export const completeTodo = (payload) => {
 // initial state
 
 const initialState = [
-  { id: uuidv4(), title: "1번", content: "1번 내용", isDone: false },
-  { id: uuidv4(), title: "2번", content: "2번 내용", isDone: true },
+  { id: 1, title: "1번", content: "1번 내용", isDone: false },
+  { id: 2, title: "2번", content: "2번 내용", isDone: true },
 ];
 
 // 리듀서 state들을 바꾼다

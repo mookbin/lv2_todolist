@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 // import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { addTodo, completeTodo, removeTodo } from "../redux/modules/todos";
@@ -21,9 +21,10 @@ function Home() {
     setContent(event.target.value);
   };
   const handleAddTodo = () => {
+    const maxId = Math.max(...todos.map((todo) => todo.id));
     dispatch(
       addTodo({
-        id: uuidv4(),
+        id: maxId + 1,
         title: title,
         content: content,
         isDone: false,
