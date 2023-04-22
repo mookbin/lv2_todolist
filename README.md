@@ -1,70 +1,11 @@
-# Getting Started with Create React App
+## todos.js
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- ADD_TODO, REMOVE_TODO, COMPLETE_TODO와 같은 액션 타입을 정의했다.
+- 위 액션 타입들을 사용해서 각 액션에 해당하는 액션 생성자 함수를 만든다.
+- 액션 생성자 함수를 사용하여 해당 액션의 정보를 전달하고, 리듀서에서 액션 타입에 맞는 동작을 수행할 수 있다.
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 초기 상태인 **initialState**를 정의하고, **todos** 리듀서에서 해당 상태를 변경하는 로직을 작성했다.
+- 리듀서는 state와 action을 받아서, action.type에 따라서 state를 변경하고, 변경된 상태를 반환한다.
+- **ADD_TODO** 액션 : 현재 상태의 배열에 새로운 할 일을 추가하는 것으로, 스프레드 연산자를 사용하여 현재 상태 배열과 새로운 할 일(payload)을 합쳐서 새로운 배열을 반환한다.
+- **REMOVE_TODO** 액션 : 현재 상태 배열에서 지우고자 하는 할 일의 id와 일치하지 않는 요소들만 필터링하여 새로운 배열을 반환한다.
+- **COMPLETE_TODO** 액션: 현재 상태 배열을 순회하며 지정된 할 일의 id를 찾아서, 해당 할 일의 isDone 값을 toggle한다. 그렇게 하기 위해서 map 함수를 사용하여 배열을 순회하고, 지정된 id와 일치하는 경우 해당 할 일의 isDone 값을 반전시키고, 그렇지 않은 경우 원래 요소를 반환한다.
