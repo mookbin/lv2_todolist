@@ -38,15 +38,25 @@ const initialState = [
 // 리듀서 state들을 바꾼다
 
 const todos = (state = initialState, action) => {
+  //state는 현재 상태를 나타내는 배열
   switch (action.type) {
     case ADD_TODO:
       return [...state, action.payload];
+    //액션 생성자 함수에서 전달받은 payload = 새로운 할 일 목록을 나타내는 객체(title,content,isDone )
+    // action.payload에 할당돼서 새로운 할 일 목록 추가할 때 참조된다
     case REMOVE_TODO:
       return state.filter((item) => item.id !== action.payload);
+    // 여기서의 payload는 삭제하려는 할일 목록의 id값.
+
     case COMPLETE_TODO:
       return state.map((item) => {
         if (item.id === action.payload) {
+          // 여기서의 payload는 완료상태로 변경하려는 할일 목록의 id값.
+          //item은 현재 반복중인 할 일 항목 객체임
+
           return { ...item, isDone: !item.isDone };
+          //isDone 속성 값을 반전시켜 업데이트
+          //변경된 할일 항목 객체는 새로운 배열에 포함, 안된건, 그대로 유지
         } else {
           return item;
         }
