@@ -6,6 +6,80 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { addTodo, completeTodo, removeTodo } from "../redux/modules/todos";
 
+const Toptitle = styled.div`
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid gray;
+  font-size: 18px;
+  padding: 15px;
+`;
+
+const Inputbox = styled.div`
+  background-color: #eee;
+  margin: 20px 10px;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-weight: 600;
+  border-radius: 10px;
+`;
+const Inputstyle = styled.input`
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 10px;
+  width: 200px;
+`;
+
+const Addbuttonstyle = styled.button`
+  margin-left: 185px;
+  width: 150px;
+  padding: 10px;
+  background-color: #008080;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+`;
+
+const Boxlist = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+`;
+
+const Todobox = styled.div`
+  margin-left: 10px;
+  border: 4px solid teal;
+  border-radius: 12px;
+  padding: 12px 24px 24px;
+  width: 270px;
+`;
+
+const Buttonset = styled.div`
+  display: flex;
+  gap: 20px;
+  margin-top: 24px;
+`;
+
+const H2st = styled.h2`
+  padding-left: 20px;
+`;
+
+const Buttonstyle = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 2px solid ${(props) => props.bordercolor};
+  border-radius: 10px;
+  width: 150px;
+  height: 35px;
+  cursor: pointer;
+`;
+
 function Home() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -41,80 +115,6 @@ function Home() {
     dispatch(removeTodo(id));
   };
 
-  const Toptitle = styled.div`
-    margin: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid gray;
-    font-size: 18px;
-    padding: 15px;
-  `;
-
-  const Inputbox = styled.div`
-    background-color: #eee;
-    margin: 20px 10px;
-    padding: 30px;
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    font-weight: 600;
-    border-radius: 10px;
-  `;
-  const Inputstyle = styled.input`
-    border: 1px solid white;
-    border-radius: 10px;
-    padding: 10px;
-    width: 200px;
-  `;
-
-  const Addbuttonstyle = styled.button`
-    margin-left: 185px;
-    width: 150px;
-    padding: 10px;
-    background-color: #008080;
-    color: white;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-  `;
-
-  const Boxlist = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-  `;
-
-  const Todobox = styled.div`
-    margin-left: 10px;
-    border: 4px solid teal;
-    border-radius: 12px;
-    padding: 12px 24px 24px;
-    width: 270px;
-  `;
-
-  const Buttonset = styled.div`
-    display: flex;
-    gap: 20px;
-    margin-top: 24px;
-  `;
-
-  const H2st = styled.h2`
-    padding-left: 20px;
-  `;
-
-  const Buttonstyle = styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-    border: 2px solid ${(props) => props.bordercolor};
-    border-radius: 10px;
-    width: 150px;
-    height: 35px;
-    cursor: pointer;
-  `;
-
   return (
     <>
       <Toptitle>
@@ -139,9 +139,9 @@ function Home() {
           .filter((todo) => !todo.isDone)
           .map((todo) => (
             <Todobox key={todo.id}>
-              <span>{todo.title}</span>
-              <span>{todo.content}</span>
               <Link to={`/detail/${todo.id}`}>상세보기</Link>
+              <h2>{todo.title}</h2>
+              <span>{todo.content}</span>
               <Buttonset>
                 <Buttonstyle
                   bordercolor="green"
@@ -165,11 +165,11 @@ function Home() {
           .filter((todo) => todo.isDone)
           .map((todo) => (
             <Todobox key={todo.id}>
-              <span>{todo.title}</span>
-              <span>{todo.content}</span>
               <Link bordercolor="gray" to={`/detail/${todo.id}`}>
                 상세보기
               </Link>
+              <h2>{todo.title}</h2>
+              <span>{todo.content}</span>
               <Buttonset>
                 <Buttonstyle
                   bordercolor="green"
